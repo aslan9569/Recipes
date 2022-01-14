@@ -1,0 +1,63 @@
+.container {
+    width: 800px;
+    height: 200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid lightgray;
+    margin-top: 30px;
+}
+.container:hover {
+    background-color: ghostwhite;
+    cursor: pointer;
+}
+.image {
+    margin-left: 20px;
+}
+.image img {
+    width: 190px;
+    height: 190px;
+    padding-top: 5px   ;
+}
+.info {
+    width: 600px;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.info h2 {
+    margin-top: 0;
+}
+.text {
+    width: 500px;
+    margin: auto;
+    font-size: 14px;
+}
+.buttons {
+    width: 200px;
+    margin: auto;
+    height: 40px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+}
+.add button {
+    width: 100px;
+    height: 30px;
+    font-size: 10px;
+    background-color: #208541;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+.recipe button {
+    height: 30px;
+    background-color: #ff4848;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 10px;
+}

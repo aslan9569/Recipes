@@ -1,0 +1,61 @@
+.modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.modalContent {
+    padding: 20px;
+    border-radius: 12px;
+    background-color: white;
+    width: 929px;
+    max-width: 100%;
+    height: 800px;
+    max-height: 100%;
+    z-index: 9;
+    text-align: center;
+    position: fixed;
+    top: 50px;
+    overflow-y: scroll;
+}
+.close {
+    text-align: right;
+    color: #ff5757;
+    position: sticky;
+    top: 0;
+}
+.close .esq:hover {
+    cursor: pointer;
+}
+.title {
+    font-family: 'Roboto Condensed', sans-serif;
+
+}
+.ingredients {
+    color: grey;
+    font-family: 'Roboto Condensed', sans-serif;
+    width: 60%;
+    margin: auto;
+}
+.recipe {
+    font-family: 'Roboto Condensed', sans-serif;
+    width: 80%;
+    font-size: 18px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 1px solid lightgray;
+    padding: 20px;
+}
+.video  {
+    width: 500px;
+    height: 250px;
+
+}
