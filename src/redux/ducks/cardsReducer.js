@@ -1,9 +1,13 @@
+import { type } from '@testing-library/user-event/dist/type'
+
 const initialState = {
   items: [],
   allItems: [],
-  loadCards: false,
+  loadingCards: false,
+  loadAllCards: false,
   openWindow: false,
-  idWindow: null
+  idWindow: null,
+  filterRecipes: ''
 }
 
 
@@ -12,18 +16,24 @@ const cardsReducer = (state = initialState, action) => {
     case 'cards/load/start':
       return {
         ...state,
-        loadCards: true
+        loadingCards: true
       }
     case 'cards/load/success' :
       return {
         ...state,
         items: action.payload,
-        loadCards: false
+        loadingCards: false
       }
-    case 'load/all/cards':
+    case 'load/allCards/start':
       return {
         ...state,
-        allItems: action.payload
+        loadAllCards: true
+      }
+    case 'load/allCards/success':
+      return {
+        ...state,
+        allItems: action.payload,
+        loadAllCards: false
       }
     case 'recipe/open':
       return {
@@ -35,6 +45,11 @@ const cardsReducer = (state = initialState, action) => {
       return {
         ...state,
        openWindow: false
+      }
+    case 'recipe/filter' :
+      return {
+        ...state,
+        filterRecipes: action.payload
       }
 
 
@@ -65,12 +80,13 @@ export const loadCards = (id) => {
 }
 export const loadAllCards = () => {
   return dispatch => {
+    dispatch({ type: 'load/allCards/start' })
 
     fetch('http://localhost:3001/recipes')
       .then(response => response.json())
       .then(json => {
         dispatch({
-          type: 'load/all/cards',
+          type: 'load/allCards/success',
           payload: json
         })
       })
@@ -86,5 +102,11 @@ export const openWindowRecipe = (id) => {
 export const closeWindowRecipe = () => {
   return {
     type: 'recipe/close'
+  }
+}
+export const filterRecipe = (text) => {
+  return {
+    type: 'recipe/filter',
+    payload: text
   }
 }
