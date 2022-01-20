@@ -7,7 +7,8 @@ const initialState = {
   loadAllCards: false,
   openWindow: false,
   idWindow: null,
-  filterRecipes: ''
+  filterRecipes: '',
+  addWindow: false
 }
 
 
@@ -50,6 +51,21 @@ const cardsReducer = (state = initialState, action) => {
       return {
         ...state,
         filterRecipes: action.payload
+      }
+    case 'open/add/recipe':
+      return {
+        ...state,
+        addWindow: true
+      }
+    case 'close/add/recipe':
+    return {
+      ...state,
+      addWindow: false
+    }
+    case 'add/recipe/success':
+      return {
+        ...state,
+        allItems: [...state.allItems, action.payload]
       }
 
 
@@ -108,5 +124,44 @@ export const filterRecipe = (text) => {
   return {
     type: 'recipe/filter',
     payload: text
+  }
+}
+export const addOpen = () => {
+  return {
+    type: 'open/add/recipe'
+  }
+}
+export const addClose = () => {
+  return {
+    type: 'close/add/recipe'
+  }
+}
+export const addRecipe = (id,category, image, title, description, ingredients, recipe) => {
+  return dispatch => {
+    dispatch({ type: 'add/recipe/start' })
+    fetch('http://localhost:3001/recipes', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: id,
+        igm: image,
+        video: '',
+        categoryId: category,
+        title: title,
+        description: description,
+        favorite: false,
+        ingredients: ingredients,
+        recipe: recipe
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      }
+    })
+      .then(response => response.json())
+      .then(json => {
+        dispatch({
+          type: 'add/recipe/success',
+          payload: json
+        })
+      })
   }
 }

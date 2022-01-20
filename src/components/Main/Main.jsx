@@ -1,28 +1,14 @@
 import React from 'react';
-import classes from './main.module.css'
-import Recipes from './Recipes/Recipes'
-import { Route } from 'react-router-dom'
-import News from './News/News'
-import Ideas from './Ideas/Ideas'
-import Authors from './Authors/Authors'
-import Kitchen from './Kitchen/Kitchen'
-import Contacts from './Contacts'
-import { useSelector } from 'react-redux'
-import { Switch, Redirect } from 'react-router-dom'
+import classes from './main.module.css';
+import Recipes from './Recipes/Recipes';
+import { Route } from 'react-router-dom';
+import News from './News/News';
+import Ideas from './Ideas/Ideas';
+import Authors from './Authors/Authors';
+import Kitchen from './Kitchen/Kitchen';
 
 function Main (props) {
-  const token = useSelector(state => state.users.token);
-  let routes;
-  if (token) {
-    routes = (
-      <Switch>
-        <Route path="/contacts">
-          <Contacts />
-        </Route>
-        <Redirect to="/contacts" />
-      </Switch>
-    )
-  }
+
 
 
   return (
@@ -45,7 +31,6 @@ function Main (props) {
       <Route path="/kitchen">
         <Kitchen />
       </Route>
-      {routes}
     </div>
   )
 }

@@ -4,17 +4,22 @@ import Authorization from '../Authorization/Authorization';
 import { useDispatch, useSelector } from 'react-redux';
 import { openWindow } from '../../../redux/ducks/usersReducer';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook } from '@fortawesome/free-solid-svg-icons'
-import Link from 'react-router-dom/es/Link'
+import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { addOpen } from '../../../redux/ducks/cardsReducer'
+import AddModal from './addRecipe/AddModal'
 
 function Profile (props) {
   const window = useSelector(state => state.users.openWindow);
+  const addWindow = useSelector(state => state.cards.addWindow);
 
 
   const dispatch = useDispatch();
 
   const handleOpenWindow = () => {
     dispatch(openWindow())
+  }
+  const openAddWindow = () => {
+  dispatch(addOpen())
   }
 
 
@@ -32,9 +37,10 @@ function Profile (props) {
               Войти
             </button>
         </div>
-        <div className={classes.add}>
+        <div className={classes.add} onClick={openAddWindow}>
           Добавить рецепт
         </div>
+        {addWindow && <AddModal />}
       </div>
       {window? <Authorization /> : true}
     </div>

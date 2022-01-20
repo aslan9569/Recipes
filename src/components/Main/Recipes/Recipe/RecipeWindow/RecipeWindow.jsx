@@ -13,8 +13,7 @@ import classes from './window.module.css';
 function Authorization (props) {
   const dispatch = useDispatch();
   const idWindow = useSelector(state => state.cards.idWindow);
-  console.log(idWindow)
-  console.log(props.allCards)
+
 
   const closeRecipeWindow = () => {
     dispatch(closeWindowRecipe())
@@ -30,7 +29,7 @@ function Authorization (props) {
       </div>
         {props.allCards.map(card => {
           if (card.id === idWindow) {
-            return <RecipeInfo card={card} />
+            return <RecipeInfo card={card} key={card.id} />
           }
         })}
       </div>
