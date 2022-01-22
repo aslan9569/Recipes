@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 import News from './News/News';
 import Ideas from './Ideas/Ideas';
 import Authors from './Authors/Authors';
-import Kitchen from './Kitchen/Kitchen';
+import MyRecipes from './MyRecipes/MyRecipes'
 
 function Main (props) {
 
@@ -15,6 +15,9 @@ function Main (props) {
     <div className={classes.container}>
       <Route exact path="/">
         <h1 style={{textAlign: 'center'}}>Главная</h1>
+      </Route>
+      <Route path="/myrecipes">
+        <MyRecipes />
       </Route>
       <Route path="/recipes">
         <Recipes />
@@ -27,9 +30,6 @@ function Main (props) {
       </Route>
       <Route path="/authors">
         <Authors />
-      </Route>
-      <Route path="/kitchen">
-        <Kitchen />
       </Route>
     </div>
   )

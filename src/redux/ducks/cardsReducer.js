@@ -8,7 +8,12 @@ const initialState = {
   openWindow: false,
   idWindow: null,
   filterRecipes: '',
-  addWindow: false
+  addWindow: false,
+  updateWindow: false,
+  useUpdateId: null,
+  title: '',
+  ingredients: '',
+  recipe: ''
 }
 
 
@@ -65,7 +70,86 @@ const cardsReducer = (state = initialState, action) => {
     case 'add/recipe/success':
       return {
         ...state,
-        allItems: [...state.allItems, action.payload]
+        allItems: [...state.allItems, action.payload],
+      }
+    case 'open/update/window':
+      return {
+        ...state,
+        updateWindow: true,
+        useUpdateId: action.payload,
+        title: action.title,
+        ingredients: action.ingredients,
+        recipe: action.recipe
+      }
+    case 'change/title':
+      return {
+        ...state,
+        title: action.payload
+      }
+    case 'change/ingredients':
+      return {
+        ...state,
+        ingredients: action.payload
+      }
+    case 'change/recipe':
+      return {
+        ...state,
+        recipe: action.payload
+      }
+    case 'change/load/success':
+      return {
+        ...state,
+        allItems: state.allItems.map(item => {
+          if (item.id === action.id) {
+            return action.payload
+          } return item
+        }),
+        updateWindow: false,
+        title: '',
+        ingredients: '',
+        recipe: '',
+      }
+    case 'update/window/close':
+      return {
+        ...state,
+        updateWindow: false
+      }
+    case 'delete/load/success':
+      return {
+        ...state,
+        allItems: state.allItems.filter(item => {
+          if (item.id === action.payload) {
+            return false
+          } return item;
+        })
+      }
+    case 'favorite/load/success':
+      return {
+        ...state,
+        allItems: state.allItems.map(item => {
+          if (item.id === action.id) {
+            return action.payload
+          } return item;
+        }),
+        items: state.items.map(item => {
+          if (item.id === action.id) {
+            return action.payload
+          } return item;
+        })
+      }
+    case 'favorite/delete/success':
+      return {
+        ...state,
+        allItems: state.allItems.map(item => {
+          if (item.id === action.id) {
+            return action.payload
+          } return item;
+        }),
+        items: state.items.map(item => {
+          if (item.id === action.id) {
+            return action.payload
+          } return item;
+        })
       }
 
 
@@ -161,6 +245,117 @@ export const addRecipe = (id,category, image, title, description, ingredients, r
         dispatch({
           type: 'add/recipe/success',
           payload: json
+        })
+      })
+  }
+}
+export const openUpdateWindow = (id, title, ingredients, recipe) => {
+  return {
+    type: 'open/update/window',
+    payload: id,
+    title: title,
+    ingredients: ingredients,
+    recipe: recipe
+  }
+}
+export const changeTitle = (text, id) => {
+  return {
+    type: 'change/title',
+    payload: text
+  }
+}
+export const changeIngredients = (text) => {
+  return {
+    type: 'change/ingredients',
+    payload: text
+  }
+}
+export const changeRecipe = (text) => {
+  return {
+    type: 'change/recipe',
+    payload: text
+  }
+}
+export const updateItems = (id, title, ingredients, recipe) => {
+  return dispatch => {
+    fetch(`http://localhost:3001/recipes/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        title: title,
+        ingredients: ingredients,
+        recipe: recipe
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      }
+    })
+      .then(response => response.json())
+      .then(json => {
+        dispatch({
+          type: 'change/load/success',
+          payload: json,
+          id: id
+        })
+      })
+  }
+}
+export const updateWindowClose = () => {
+  return {
+    type: 'update/window/close'
+  }
+}
+export const deleteRecipe = (id) => {
+  return dispatch => {
+    fetch(`http://localhost:3001/recipes/${id}`, {
+      method: 'DELETE'
+    })
+      .then(response => response.json())
+      .then(json => {
+        dispatch({
+          type: 'delete/load/success',
+          payload: id
+        })
+      })
+  }
+}
+export const favoriteAdd = (id) => {
+  return dispatch => {
+    fetch(`http://localhost:3001/recipes/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        favorite: true
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      }
+    })
+      .then(response => response.json())
+      .then(json => {
+        dispatch({
+          type: 'favorite/load/success',
+          payload: json,
+          id: id
+        })
+      })
+  }
+}
+export const favoriteDelete = (id) => {
+  return dispatch => {
+    fetch(`http://localhost:3001/recipes/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        favorite: false
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      }
+    })
+      .then(response => response.json())
+      .then(json => {
+        dispatch({
+          type: 'favorite/delete/success',
+          payload: json,
+          id: id
         })
       })
   }

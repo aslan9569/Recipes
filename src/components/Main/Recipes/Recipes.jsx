@@ -12,13 +12,6 @@ function Footer () {
 }
 
 function Recipes (props) {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadAllCards())
-  }, [])
-
-
-
   return (
     <div>
      <div className={classes.fixed}>

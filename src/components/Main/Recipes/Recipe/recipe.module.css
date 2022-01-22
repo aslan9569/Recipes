@@ -34,7 +34,7 @@
     font-size: 14px;
 }
 .buttons {
-    width: 200px;
+    width: 220px;
     margin: auto;
     height: 40px;
     margin-top: 30px;
@@ -47,11 +47,16 @@
 .add button {
     width: 100px;
     height: 30px;
-    font-size: 10px;
+    font-size: 11px;
     background-color: #208541;
     color: white;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+.add button:hover {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2), 0 4px 6px rgba(0,0,0,0.2);
+
 }
 .recipe button {
     height: 30px;
@@ -59,11 +64,23 @@
     border: none;
     border-radius: 5px;
     color: white;
-    font-size: 10px;
+    font-size: 11px;
+    cursor: pointer;
+}
+.recipe button:hover {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2), 0 4px 6px rgba(0,0,0,0.2);
 }
 .spin {
     display: flex;
     height: 75vh;
     justify-content: center;
     align-items: center;
+}
+.reviews button {
+    height: 30px;
+    background-color: chocolate;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 11px;
 }

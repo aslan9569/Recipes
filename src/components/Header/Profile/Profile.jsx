@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { addOpen } from '../../../redux/ducks/cardsReducer'
 import AddModal from './addRecipe/AddModal'
+import Link from 'react-router-dom/es/Link'
 
 function Profile (props) {
   const window = useSelector(state => state.users.openWindow);
@@ -29,7 +30,9 @@ function Profile (props) {
         <div className={classes.book}>
           <FontAwesomeIcon icon={faBook} />
         </div>
-        Моя книга рецептов
+        <Link to="/myrecipes">
+          <div>Моя книга рецептов</div>
+        </Link>
       </div>
       <div className={classes.addRecipes}>
         <div>

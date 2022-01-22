@@ -15,7 +15,7 @@
     padding: 20px;
     border-radius: 12px;
     background-color: white;
-    width: 929px;
+    width: 700px;
     max-width: 100%;
     height: 800px;
     max-height: 100%;
@@ -24,6 +24,7 @@
     position: fixed;
     top: 50px;
     overflow-y: scroll;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 .close {
     text-align: right;
@@ -35,27 +36,41 @@
     cursor: pointer;
 }
 .title {
-    font-family: 'Roboto Condensed', sans-serif;
-
+    margin-top: 40px;
 }
 .ingredients {
     color: grey;
-    font-family: 'Roboto Condensed', sans-serif;
-    width: 60%;
+    font-size: 23px;
+    width: 50%;
     margin: auto;
+    margin-top: 40px;
 }
 .recipe {
-    font-family: 'Roboto Condensed', sans-serif;
     width: 80%;
-    font-size: 18px;
+    font-size: 23px;
     margin: auto;
-    margin-top: 30px;
+    margin-top: 60px;
     margin-bottom: 30px;
     border: 1px solid lightgray;
-    padding: 20px;
+    box-sizing: border-box;
+    padding: 30px 40px;
+    border-radius: 10px;
 }
 .video  {
     width: 500px;
     height: 250px;
-
+}
+.update {
+    margin-top: 20px;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    background-color: #5667ff;
+    color: white;
+    cursor: pointer;
+}
+.update:active {
+    outline: 1px solid darkblue;
 }

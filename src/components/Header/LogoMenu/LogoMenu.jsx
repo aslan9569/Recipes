@@ -30,12 +30,7 @@ function LogoMenu (props) {
           </li>
           <li>
             <Link to="/authors">
-              Авторы
-            </Link>
-          </li>
-          <li>
-            <Link to="/kitchen">
-              Кухня
+              Информация
             </Link>
           </li>
         </ul>

@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    font-family: 'Roboto Condensed', sans-serif;
+    height: 89vh;
+}
+.containerBig {
+    width: 100%;
+    font-family: 'Roboto Condensed', sans-serif;
+    height: 100%;
+}
+h1 {
+    text-align: center;
+    margin-top: 0;
+    padding-top: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.spin {
+    display: flex;
+    height: 89vh;
+    justify-content: center;
+    align-items: center;
+}
