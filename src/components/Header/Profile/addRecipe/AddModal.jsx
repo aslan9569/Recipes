@@ -17,6 +17,12 @@ function AddModal (props) {
 
   const handleAdd = () => {
     dispatch(addRecipe(allItems,category, image, title, description, ingredients, recipe))
+    setCategory('')
+    setImage('')
+    setTitle('')
+    setDescription('')
+    setIngredients('')
+    setRecipe('')
   }
   const closeAddWindow = () => {
     dispatch(addClose())
@@ -35,6 +41,7 @@ function AddModal (props) {
             <input
               type="text"
               placeholder="Категория"
+              value={category}
               onChange={e => setCategory(Number(e.target.value))}
             />
           </div>
@@ -43,6 +50,7 @@ function AddModal (props) {
             <input
               type="text"
               placeholder="Ссылка на изображение"
+              value={image}
               onChange={e => setImage(e.target.value)}
             />
           </div>
@@ -50,12 +58,14 @@ function AddModal (props) {
             <input
               type="text"
               placeholder="Название"
+              value={title}
               onChange={e => setTitle(e.target.value)}
             />
           </div>
           <div>
             <input
               type="text"
+              value={description}
               placeholder="Краткое описание"
               onChange={e => setDescription(e.target.value)}
             />
@@ -64,6 +74,7 @@ function AddModal (props) {
             <input
               type="text"
               placeholder="Ингредиенты"
+              value={ingredients}
               onChange={e => setIngredients(e.target.value)}
             />
           </div>
@@ -71,6 +82,7 @@ function AddModal (props) {
             <input
               type="text"
               placeholder="Рецепт"
+              value={recipe}
               onChange={e => setRecipe(e.target.value)}
             />
           </div>

@@ -1,0 +1,41 @@
+.container {
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.container h1 {
+    padding-top: 40px;
+}
+.newsCard {
+    width: 85%;
+    height: 200px;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid lightgray;
+}
+.text {
+    width: 700px;
+    height: 180px;
+}
+.text div {
+    font-size: 30px;
+    box-sizing: border-box;
+    padding: 30px;
+}
+.text a {
+    font-size: 20px;
+    margin-left: 30px;
+}
+.text a:hover {
+    color: blue;
+}
+
+.img, .img img {
+    width: 180px;
+    height: 180px;
+    margin-right: 10px;
+
+}

@@ -1,0 +1,51 @@
+.container {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.container p {
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+.form {
+    width: 80%;
+    margin: auto;
+}
+.form input {
+    width: 200px;
+    height: 20px;
+    outline: none;
+    margin-top: 50px;
+    padding-left: 10px;
+}
+.form textarea {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    font-size: 17px;
+    padding-left: 10px;
+}
+.form button {
+    width: 80px;
+    height: 30px;
+    background-color: brown;
+    border: none;
+    color: white;
+    margin-top: 10px;
+}
+.ideas {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    border: 1px solid saddlebrown;
+    margin-bottom: 20px;
+}
+.name {
+    padding-left: 20px;
+    padding-top: 10px;
+    font-size: 20px;
+}

@@ -71,6 +71,7 @@ const cardsReducer = (state = initialState, action) => {
       return {
         ...state,
         allItems: [...state.allItems, action.payload],
+        items: [...state.items, action.payload]
       }
     case 'open/update/window':
       return {
@@ -121,6 +122,11 @@ const cardsReducer = (state = initialState, action) => {
           if (item.id === action.payload) {
             return false
           } return item;
+        }),
+        items: state.items.filter(item => {
+          if (item.id === action.payload) {
+            return false
+          } return  item;
         })
       }
     case 'favorite/load/success':
@@ -151,6 +157,7 @@ const cardsReducer = (state = initialState, action) => {
           } return item;
         })
       }
+
 
 
     default :

@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { openWindow } from '../../../redux/ducks/usersReducer';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from '@fortawesome/free-solid-svg-icons';
-import { addOpen } from '../../../redux/ducks/cardsReducer'
-import AddModal from './addRecipe/AddModal'
-import Link from 'react-router-dom/es/Link'
+import { addOpen } from '../../../redux/ducks/cardsReducer';
+import AddModal from './addRecipe/AddModal';
+import { Link } from 'react-router-dom';
 
 function Profile (props) {
   const window = useSelector(state => state.users.openWindow);
@@ -28,7 +28,9 @@ function Profile (props) {
     <div className={classes.sign}>
       <div className={classes.myBook}>
         <div className={classes.book}>
-          <FontAwesomeIcon icon={faBook} />
+          <Link to="/myrecipes">
+            <FontAwesomeIcon icon={faBook} />
+          </Link>
         </div>
         <Link to="/myrecipes">
           <div>Моя книга рецептов</div>

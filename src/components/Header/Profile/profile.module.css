@@ -14,10 +14,10 @@
     border-right: 1px solid #d9d9d9;
     font-size: 14px;
     padding-right: 10px;
-}
-.myBook:hover {
-    color: lightsalmon;
     cursor: pointer;
+}
+.myBook:hover a {
+    color: lightsalmon;
 }
 .addRecipes {
     display: flex;

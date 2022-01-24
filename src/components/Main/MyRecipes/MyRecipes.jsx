@@ -15,13 +15,13 @@ function MyRecipes (props) {
     return card.title.toLowerCase().includes(filterRecipe.toLowerCase())
   });
   return (
-    <div className={allCards.map(item => item.length > 3 ? classes.container : classes.containerBig)}>
+    <div>
       {loadAllCards ? (
         <div className={classes.spin}>
           <ReactLoading type={'spin'} color={'#7729b7'} height={'40px'} width={'40px'}  />
         </div>
       ) : (
-        <div>
+        <div className={classes.container}>
           <h1>Мои рецепты</h1>
           <Input />
           {filteredAllCards.map(card => {

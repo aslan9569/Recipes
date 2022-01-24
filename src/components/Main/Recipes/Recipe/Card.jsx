@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './recipe.module.css';
-import { useDispatch, useSelector } from 'react-redux'
-import { deleteRecipe, favoriteAdd, favoriteDelete, openWindowRecipe } from '../../../../redux/ducks/cardsReducer'
-import image from '../Recipe/noImage/noImage.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteRecipe, favoriteAdd, favoriteDelete, openWindowRecipe, } from '../../../../redux/ducks/cardsReducer';
+import { reviewsOpen } from '../../../../redux/ducks/reviewsReducer';
 
 
 
@@ -25,6 +25,11 @@ function Card (props) {
     e.stopPropagation()
     dispatch(favoriteDelete(id))
   }
+  const handleReviewsOpen = (e, id, title) => {
+    e.stopPropagation()
+    dispatch(reviewsOpen(id, title))
+  }
+
 
   const limitText = (str, n, symb) => {
   if (!n && !str) return str;
@@ -56,14 +61,13 @@ function Card (props) {
                  )}
                </div>
                <div className={classes.reviews}>
-                 <button>
+                 <button onClick={(e) => handleReviewsOpen(e, props.card.id, props.card.title)}>
                    Отзывы
                  </button>
                </div>
                <div className={classes.recipe}>
                  <button
                    onClick={(e) => handleDeleteRecipe(e,props.card.id)}
-                   disabled={true}
                  >
                    Удалить
                  </button>

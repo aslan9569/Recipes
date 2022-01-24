@@ -1,0 +1,32 @@
+.comment {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #7729b7;
+    font-family: 'Raleway', sans-serif;
+    border-radius: 10px;
+}
+.name {
+    text-align: left;
+    color: grey;
+}
+.comment p {
+    text-align: left;
+}
+.comment button {
+    width: 80px;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ff4848;
+    color: white;
+    cursor: pointer;
+}
+.comment button:hover {
+    background-color: red;
+}

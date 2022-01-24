@@ -4,8 +4,8 @@ import Recipes from './Recipes/Recipes';
 import { Route } from 'react-router-dom';
 import News from './News/News';
 import Ideas from './Ideas/Ideas';
-import Authors from './Authors/Authors';
 import MyRecipes from './MyRecipes/MyRecipes'
+import Info from './Authors/Info'
 
 function Main (props) {
 
@@ -29,7 +29,7 @@ function Main (props) {
         <Ideas />
       </Route>
       <Route path="/authors">
-        <Authors />
+        <Info />
       </Route>
     </div>
   )

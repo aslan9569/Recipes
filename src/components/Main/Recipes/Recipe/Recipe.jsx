@@ -6,6 +6,7 @@ import { loadAllCards, loadCards } from '../../../../redux/ducks/cardsReducer';
 import RecipeWindow from './RecipeWindow/RecipeWindow';
 import ReactLoading from 'react-loading';
 import classes from './recipe.module.css';
+import ReviewsWindow from './ReviewsWindow/ReviewsWindow'
 
 
 function Recipe (props) {
@@ -17,6 +18,7 @@ function Recipe (props) {
   const loadAllCards = useSelector(state => state.cards.loadAllCards);
   const loadingCards = useSelector(state => state.cards.loadingCards);
   const filterRecipe = useSelector(state => state.cards.filterRecipes);
+  const reviewsOpen = useSelector(state => state.reviews.reviewsOpen);
 
   useEffect(() => {
     dispatch(loadCards(id))
@@ -31,6 +33,7 @@ function Recipe (props) {
 
   return (
     <div>
+      {reviewsOpen && <ReviewsWindow />}
       {loadAllCards || loadingCards ? <div className={classes.spin}>
           <ReactLoading type={'spin'} color={'#7729b7'} height={'40px'} width={'40px'}  />
       </div> :
