@@ -4,7 +4,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from 'react-redux'
 import { closeWindow, loginStart } from '../../../redux/ducks/usersReducer'
-import Link from 'react-router-dom/es/Link'
+
 
 
 function Authorization (props) {
@@ -14,7 +14,6 @@ function Authorization (props) {
   }
   const [login, setLogin] = useState("");
   const [pass, setPass] = useState("");
-  const error = useSelector(state => state.users.error);
 
 
   const handleClick = () => {
@@ -47,7 +46,7 @@ function Authorization (props) {
             value={pass}
             onChange={e => setPass(e.target.value)}
           /></div>
-          {error && <div className={classes.error}>Не правильный логин или пароль!</div>}
+          <div className={classes.error}>login: admin, password: admin</div>
           <div>
             <button
               type="button"

@@ -1,16 +1,17 @@
 const initialState = {
-  contacts: [],
   contactsLoading: false,
-  token: "",
-  authorizing: false,
   openWindow: false,
-  error: false
+  admin: JSON.parse(localStorage.getItem('admin')) || false,
+  user: JSON.parse(localStorage.getItem('user')) || false,
+  token: localStorage.getItem('token') || null,
+  error: false,
+  name: localStorage.getItem('name') || '',
+  authorizing: false
 }
 
 
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-
     case 'window/open' :
       return {
         ...state,
@@ -21,26 +22,39 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         openWindow: false
       }
-    case 'auth/started':
+    case 'access/admin':
       return {
         ...state,
+        user: false,
+        admin: true,
+        error: false,
+        openWindow: false,
+        name: action.payload.name,
+        token: action.payload.token,
         authorizing: true
       }
-    case 'auth/succeed':
-    return {
-      ...state,
-      token: action.payload.token,
-      authorizing: false,
-      openWindow: false
-    }
-    case 'auth/fail':
+    case 'access/user':
       return {
         ...state,
-        authorizing: false,
-        error: true
-      }
-
-
+        user: true,
+        admin: false,
+        error: false,
+        openWindow: false,
+        name: action.payload.name,
+        token: action.payload.token,
+        authorizing: true
+      };
+    case 'logout/start':
+       return {
+         ...state,
+         openWindow: false,
+         admin: false,
+         user: false,
+         token: null,
+         error: false,
+         name: '',
+         authorizing: false
+       }
 
     default :
       return state
@@ -64,26 +78,46 @@ export const closeWindow = () => {
 }
 export const loginStart = (login, password) => {
   return dispatch => {
-    dispatch({ type: 'auth/started' })
-    fetch(`http://localhost:3001/admin`)
+    fetch(`http://localhost:3001/authorization`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        login: login,
+        password: password,
+      }),
+    })
       .then(response => response.json())
       .then(json => {
-        const random = Math.random()
-        if (random < 0.5) {
-          //error
+        localStorage.setItem('token', json.token);
+        localStorage.setItem('name', json.name);
+        localStorage.setItem('user', 'true');
+        localStorage.setItem('admin', 'false');
+        dispatch({
+          type: 'access/user',
+          payload: json,
+        });
+        if (json.login === 'admin' && json.password === 'admin') {
+          localStorage.setItem('token', json.token);
+          localStorage.setItem('name', json.name);
+          localStorage.setItem('user', 'false');
+          localStorage.setItem('admin', 'true');
           dispatch({
-            type: 'auth/fail',
-            payload: json
-          })
-        } else {
-          dispatch({
-            type: 'auth/succeed',
-            payload: json
-          })
+            type: 'access/admin',
+            payload:json
+          });
         }
       })
 
   }
+}
+export const logout = () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('name');
+  localStorage.removeItem('user');
+  localStorage.removeItem('admin');
+  return {
+    type: 'logout/start',
+  };
 }
 
 

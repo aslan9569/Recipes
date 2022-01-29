@@ -15,6 +15,7 @@ function ReviewsWindow (props) {
   const nameRecipe = useSelector(state => state.reviews.nameRecipe);
   const [name, setName] = useState('');
   const [comment, setComment] = useState('');
+  const userName = useSelector(state => state.users.name);
 
 
   const handleReviewsClose = () => {
@@ -56,7 +57,7 @@ function ReviewsWindow (props) {
             <input
               type="text"
               placeholder="Введите свое имя"
-              value={name}
+              value={userName ? userName : name}
               onChange={e => setName(e.target.value)}
             />
           </div>

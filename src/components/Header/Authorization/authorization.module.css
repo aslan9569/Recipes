@@ -3,8 +3,9 @@
 
 .modal {
     width: 100vw;
+    max-width: 100vh;
     height: 100vh;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0,0,0,0.5);
     position: fixed;
     top: 0;
     left: 0;
@@ -74,5 +75,4 @@
     width: 350px;
     margin: auto;
     margin-top: 3px;
-    color: orangered;
 }

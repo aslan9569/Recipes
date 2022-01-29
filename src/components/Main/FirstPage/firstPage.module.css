@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+.text {
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.imageBlock {
+    width: 900px;
+    max-width: 100%;
+    height: 700px;
+    background-image: url("https://nashagazeta.ch/sites/default/files/food_0.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+    border-radius: 20px;
+    margin-top: 60px;
+}
+.fon {
+    width: 100%;
+    height: 100%;
+    background-color: #0000005c;
+    border-radius: 20px;
+}
+.fon:hover {
+    background-color: #0000006e;
+}
+.title {
+    font-size: 40px;
+    color: white;
+    padding: 30px;
+    font-family: 'Source Serif 4', sans-serif;
+}
+.description {
+    font-size: 50px;
+    color: white;
+    padding-left: 30px;
+    padding-top: 50px;
+    font-family: 'Lobster', cursive;
+}
