@@ -33,7 +33,7 @@ export const loadCategories = () => {
   return (dispatch) => {
     dispatch({type: 'categories/load/start'})
 
-    fetch('http://localhost:3001/categories')
+    fetch('/categories')
       .then(response => response.json())
       .then(json => {
         dispatch({

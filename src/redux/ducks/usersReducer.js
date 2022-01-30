@@ -78,7 +78,7 @@ export const closeWindow = () => {
 }
 export const loginStart = (login, password) => {
   return dispatch => {
-    fetch(`http://localhost:3001/authorization`, {
+    fetch(`/authorization`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

@@ -174,7 +174,7 @@ export const loadCards = (id) => {
   return dispatch => {
     dispatch({ type: 'cards/load/start' })
 
-    fetch(`http://localhost:3001/recipes?categoryId=${id}`)
+    fetch(`/recipes?categoryId=${id}`)
       .then(response => response.json())
       .then(json => {
         dispatch({
@@ -189,7 +189,7 @@ export const loadAllCards = () => {
   return dispatch => {
     dispatch({ type: 'load/allCards/start' })
 
-    fetch('http://localhost:3001/recipes')
+    fetch('/recipes')
       .then(response => response.json())
       .then(json => {
         dispatch({
@@ -230,7 +230,7 @@ export const addClose = () => {
 export const addRecipe = (id,category, image, title, description, ingredients, recipe) => {
   return dispatch => {
     dispatch({ type: 'add/recipe/start' })
-    fetch('http://localhost:3001/recipes', {
+    fetch('/recipes', {
       method: 'POST',
       body: JSON.stringify({
         id: id,
@@ -285,7 +285,7 @@ export const changeRecipe = (text) => {
 }
 export const updateItems = (id, title, ingredients, recipe) => {
   return dispatch => {
-    fetch(`http://localhost:3001/recipes/${id}`, {
+    fetch(`/recipes/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         title: title,
@@ -313,7 +313,7 @@ export const updateWindowClose = () => {
 }
 export const deleteRecipe = (id) => {
   return dispatch => {
-    fetch(`http://localhost:3001/recipes/${id}`, {
+    fetch(`/recipes/${id}`, {
       method: 'DELETE'
     })
       .then(response => response.json())
@@ -327,7 +327,7 @@ export const deleteRecipe = (id) => {
 }
 export const favoriteAdd = (id) => {
   return dispatch => {
-    fetch(`http://localhost:3001/recipes/${id}`, {
+    fetch(`/recipes/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         favorite: true
@@ -348,7 +348,7 @@ export const favoriteAdd = (id) => {
 }
 export const favoriteDelete = (id) => {
   return dispatch => {
-    fetch(`http://localhost:3001/recipes/${id}`, {
+    fetch(`/recipes/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         favorite: false

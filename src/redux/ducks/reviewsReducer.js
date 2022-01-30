@@ -74,7 +74,7 @@ export const loadComments = (commentId) => {
   return dispatch => {
     dispatch({ type: 'comments/load/start' })
 
-   fetch(`http://localhost:3001/comments?postId=${commentId}`)
+   fetch(`/comments?postId=${commentId}`)
     .then(response => response.json())
     .then(json => {
       dispatch({
@@ -86,7 +86,7 @@ export const loadComments = (commentId) => {
 }
 export const postComment = (commentId, id, name, comment) => {
   return dispatch => {
-    fetch('http://localhost:3001/comments', {
+    fetch('/comments', {
       method: 'POST',
       body: JSON.stringify({
         postId: commentId,
@@ -108,7 +108,7 @@ export const postComment = (commentId, id, name, comment) => {
 }
 export const deleteComment = (id) => {
   return dispatch => {
-    fetch(`http://localhost:3001/comments/${id}`, {
+    fetch(`/comments/${id}`, {
       method: 'DELETE'
     })
       .then(response => response.json())
