@@ -26,6 +26,19 @@
     overflow-y: scroll;
     font-family: 'Roboto Condensed', sans-serif;
 }
+.modalContent::-webkit-scrollbar {
+    width: 10px;
+
+}
+.modalContent::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #d9d9d9;
+}
+.modalContent::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background-color: #f9f9fd;
+}
 .close {
     text-align: right;
     color: #ff5757;

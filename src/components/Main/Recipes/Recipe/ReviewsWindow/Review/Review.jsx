@@ -1,14 +1,14 @@
-import React from 'react';
-import classes from './review.module.css';
-import { useDispatch } from 'react-redux'
-import { deleteComment } from '../../../../../../redux/ducks/reviewsReducer'
+import React from "react";
+import classes from "./review.module.css";
+import { useDispatch } from "react-redux";
+import { deleteComment } from "../../../../../../redux/ducks/reviewsReducer";
 
-function Review (props) {
+function Review(props) {
   const dispatch = useDispatch();
 
   const handleDeleteComment = (id) => {
-    dispatch(deleteComment(id))
-  }
+    dispatch(deleteComment(id));
+  };
 
   return (
     <div className={classes.comment}>
@@ -18,7 +18,7 @@ function Review (props) {
         Удалить
       </button>
     </div>
-  )
+  );
 }
 
 export default Review

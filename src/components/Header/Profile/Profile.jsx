@@ -1,32 +1,31 @@
 import classes from './profile.module.css';
 import React from 'react';
-import Authorization from '../Authorization/Authorization';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout, openWindow } from '../../../redux/ducks/usersReducer'
+import Authorization from "../Authorization/Authorization";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, openWindow } from "../../../redux/ducks/usersReducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook } from '@fortawesome/free-solid-svg-icons';
-import { addOpen } from '../../../redux/ducks/cardsReducer';
-import AddModal from './addRecipe/AddModal';
-import { Link } from 'react-router-dom';
+import { faBook } from "@fortawesome/free-solid-svg-icons";
+import { addOpen } from "../../../redux/ducks/cardsReducer";
+import AddModal from "./addRecipe/AddModal";
+import { Link } from "react-router-dom";
 
-function Profile (props) {
-  const window = useSelector(state => state.users.openWindow);
-  const addWindow = useSelector(state => state.cards.addWindow);
-  const userName = useSelector(state => state.users.name);
-  const login = useSelector(state => state.users.token);
+function Profile(props) {
+  const window = useSelector((state) => state.users.openWindow);
+  const addWindow = useSelector((state) => state.cards.addWindow);
+  const userName = useSelector((state) => state.users.name);
+  const login = useSelector((state) => state.users.token);
 
   const dispatch = useDispatch();
 
   const handleOpenWindow = () => {
-    dispatch(openWindow())
-  }
+    dispatch(openWindow());
+  };
   const openAddWindow = () => {
-  dispatch(addOpen())
-  }
-  const handleLogout= () => {
-    dispatch(logout())
-  }
-
+    dispatch(addOpen());
+  };
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <div className={classes.sign}>
@@ -42,41 +41,35 @@ function Profile (props) {
       </div>
       <div className={classes.addRecipes}>
         <div className={classes.user}>
-          {userName === '' ? 'вы вошли как гость' : `${userName}`}
+          {userName === "" ? "вы вошли как гость" : `${userName}`}
         </div>
         <div>
           {login === null ? (
-            <button type="button" className={classes.signIn} onClick={handleOpenWindow} >
+            <button
+              type="button"
+              className={classes.signIn}
+              onClick={handleOpenWindow}
+            >
               Войти
             </button>
-          ) :
-            (
-              <button type="button" className={classes.signIn} onClick={handleLogout} >
-                Выйти
-              </button>
+          ) : (
+            <button
+              type="button"
+              className={classes.signIn}
+              onClick={handleLogout}
+            >
+              Выйти
+            </button>
           )}
         </div>
         <div className={classes.add} onClick={openAddWindow}>
           Добавить рецепт
         </div>
-
-
-
-
-
-
-        {/*<div className={classes.login}>вы вошли как гость</div>*/}
-        {/*    <div type="button" className={classes.signIn} onClick={handleOpenWindow}>*/}
-        {/*      Войти*/}
-        {/*    </div>*/}
-        {/*<div className={classes.add} onClick={openAddWindow}>*/}
-        {/*  Добавить рецепт*/}
-        {/*</div>*/}
       </div>
       {addWindow && <AddModal />}
-      {window? <Authorization /> : true}
+      {window ? <Authorization /> : true}
     </div>
-  )
+  );
 }
 
 export default Profile

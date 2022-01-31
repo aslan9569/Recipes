@@ -1,23 +1,13 @@
-import React, { useState } from 'react'
-import classes from './input.module.css';
-import { useDispatch, useSelector } from 'react-redux'
-import { filterRecipe } from '../../../../redux/ducks/cardsReducer'
+import React, { useState } from "react";
+import classes from "./input.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { filterRecipe } from "../../../../redux/ducks/cardsReducer";
 
-
-function Input (props) {
-  // const [value, setValue] = useState('');
-  // const cards = useSelector(state => state.cards.allItems);
-  // const filteredRecipes = () => {
-  // cards.filter(recipe => {
-  //   return recipe.title.toLowerCase().includes(value.toLowerCase())
-  // })
-  // }
+function Input(props) {
   const dispatch = useDispatch();
   const filteredRecipes = (e) => {
-    dispatch(filterRecipe(e.target.value))
-  }
-
-
+    dispatch(filterRecipe(e.target.value));
+  };
 
   return (
     <div className={classes.input}>
@@ -30,7 +20,7 @@ function Input (props) {
         />
       </form>
     </div>
-  )
+  );
 }
 
-export default Input
+export default Input;

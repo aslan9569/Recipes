@@ -1,17 +1,14 @@
-import React from 'react';
-import classes from './main.module.css';
-import Recipes from './Recipes/Recipes';
-import { Route } from 'react-router-dom';
-import News from './News/News';
-import Ideas from './Ideas/Ideas';
-import MyRecipes from './MyRecipes/MyRecipes'
-import Info from './Info/Info'
-import FirstPage from './FirstPage/FirstPage'
+import React from "react";
+import classes from "./main.module.css";
+import Recipes from "./Recipes/Recipes";
+import { Route } from "react-router-dom";
+import News from "./News/News";
+import Ideas from "./Ideas/Ideas";
+import MyRecipes from "./MyRecipes/MyRecipes";
+import Info from "./Info/Info";
+import FirstPage from "./FirstPage/FirstPage";
 
-function Main (props) {
-
-
-
+function Main(props) {
   return (
     <div className={classes.container}>
       <Route exact path="/">
@@ -33,7 +30,7 @@ function Main (props) {
         <Info />
       </Route>
     </div>
-  )
+  );
 }
 
 export default Main

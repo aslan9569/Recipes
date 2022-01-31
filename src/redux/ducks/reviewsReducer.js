@@ -1,123 +1,121 @@
-import { type } from '@testing-library/user-event/dist/type'
+import { type } from "@testing-library/user-event/dist/type";
 
 const initialState = {
   items: [],
   loadingComments: false,
   reviewsOpen: false,
   commentId: null,
-  nameRecipe: ''
-}
-
+  nameRecipe: "",
+};
 
 const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'reviews/open':
+    case "reviews/open":
       return {
         ...state,
         reviewsOpen: true,
         commentId: action.id,
-        nameRecipe: action.title
-      }
-    case 'reviews/close':
+        nameRecipe: action.title,
+      };
+    case "reviews/close":
       return {
         ...state,
-        reviewsOpen: false
-      }
-    case 'comments/load/start':
+        reviewsOpen: false,
+      };
+    case "comments/load/start":
       return {
         ...state,
-        loadingComments: true
-      }
-    case 'comments/load/success':
+        loadingComments: true,
+      };
+    case "comments/load/success":
       return {
         ...state,
         items: action.payload,
-        loadingComments: false
-      }
-    case 'post/comment/success':
+        loadingComments: false,
+      };
+    case "post/comment/success":
       return {
         ...state,
-        items: [...state.items, action.payload]
-      }
-    case 'delete/load/success':
+        items: [...state.items, action.payload],
+      };
+    case "delete/load/success":
       return {
         ...state,
-        items: state.items.filter(item => {
-          if(item.id === action.payload) {
-            return false
-          } return item;
-        })
-      }
+        items: state.items.filter((item) => {
+          if (item.id === action.payload) {
+            return false;
+          }
+          return item;
+        }),
+      };
 
-    default :
-      return state
+    default:
+      return state;
   }
-}
+};
 export default reviewsReducer;
-
 
 // Actions
 
 export const reviewsOpen = (id, title) => {
   return {
-    type: 'reviews/open',
+    type: "reviews/open",
     id: id,
-    title: title
-  }
-}
+    title: title,
+  };
+};
 export const reviewsClose = () => {
   return {
-    type: 'reviews/close'
-  }
-}
+    type: "reviews/close",
+  };
+};
 export const loadComments = (commentId) => {
-  return dispatch => {
-    dispatch({ type: 'comments/load/start' })
+  return (dispatch) => {
+    dispatch({ type: "comments/load/start" });
 
-   fetch(`/comments?postId=${commentId}`)
-    .then(response => response.json())
-    .then(json => {
-      dispatch({
-        type: 'comments/load/success',
-        payload: json
-      })
-    })
-  }
-}
+    fetch(`/comments?postId=${commentId}`)
+      .then((response) => response.json())
+      .then((json) => {
+        dispatch({
+          type: "comments/load/success",
+          payload: json,
+        });
+      });
+  };
+};
 export const postComment = (commentId, id, name, comment) => {
-  return dispatch => {
-    fetch('/comments', {
-      method: 'POST',
+  return (dispatch) => {
+    fetch("/comments", {
+      method: "POST",
       body: JSON.stringify({
         postId: commentId,
         name: name,
-        body: comment
+        body: comment,
       }),
       headers: {
-        'Content-type' : 'application/json; charset=UTF-8'
-      }
+        "Content-type": "application/json; charset=UTF-8",
+      },
     })
-      .then(response => response.json())
-      .then(json => {
+      .then((response) => response.json())
+      .then((json) => {
         dispatch({
-          type: 'post/comment/success',
-          payload: json
-        })
-      })
-  }
-}
+          type: "post/comment/success",
+          payload: json,
+        });
+      });
+  };
+};
 export const deleteComment = (id) => {
-  return dispatch => {
+  return (dispatch) => {
     fetch(`/comments/${id}`, {
-      method: 'DELETE'
+      method: "DELETE",
     })
-      .then(response => response.json())
-      .then(json => {
+      .then((response) => response.json())
+      .then((json) => {
         dispatch({
-          type: 'delete/load/success',
-          payload: id
-        })
-      })
-
-  }
-}
+          type: "delete/load/success",
+          payload: id,
+        });
+      });
+  };
+};
